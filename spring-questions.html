@@ -1,0 +1,782 @@
+<html>
+    <title>VMWARE Spring 2V0.72.22 Questions and Answers</title>
+    <h1>VMWARE Spring 2V0.72.22 Questions and Answers</h1>
+    <head>
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans|Oswald" media="screen">
+    </head>
+    <div class="entry">
+        <p class="questions">1. If a class is annotated with @Component, what should be done to have Spring automatically detect the annotated class and load it as a bean? (Choose the best answer.) </p>
+        <div>
+            <p class="choices answer">A. Ensure a valid bean name in the @Component annotation is specified. </p>
+            <p class="choices community-answer">B. Ensure a valid @ComponentScan annotation in the Java configuration is specified. </p>
+            <p class="choices">C. Ensure a valid @Scope for the class is specified. </p>
+            <p class="choices">D. Ensure a valid @Bean for the class is specified. </p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: B</p>
+                    Valid bean name is provided for you using the name of the class, @ComponentScan on a @Configuration marked class is needed.
+                </li>
+                <li>
+                    To autodetect these classes and register the corresponding beans, you need to add @ComponentScan  to your @Configuration class
+                    <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core">https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">2. Which two options will inject the value of the daily.limit system property? (Choose two.)  </p>
+        <div>
+            <p class="choices community-answer">A. @Value(“#{daily.limit}”)</p>
+            <p class="choices answer">B. @Value(“$(systemProperties.daily.limit)”)</p>
+            <p class="choices">C. @Value(“$(daily.limit)”)</p>
+            <p class="choices answer">D. @Value(“#{systemProperties[‘daily.limit’]}”)</p>
+            <p class="choices community-answer">E. @Value(“#{systemProperties.daily.limit}”)</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AE</p>
+                    <p>A. @Value(“#{daily.limit}”)</p>
+                    <p>E. @Value(“#{systemProperties.daily.limit}”)   because we are talking about SystemProperty</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">3. Which two options are REST principles? (Choose two.)  </p>
+        <div> 
+            <p class="choices answer">A. RESTful applications use a stateless architecture.</p>
+            <p class="choices answer">B. RESTful application use HTTP headers and status codes as a contract with the clients.</p>
+            <p class="choices">C. RESTful applications cannot use caching.</p>
+            <p class="choices">D. RESTful application servers keep track of the client state.</p>
+            <p class="choices">E. RESTful applications favor tight coupling between the clients and the servers.</p>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">4. Which option is true about use of mocks in a Spring Boot web slice test? (Choose the best answer.) </p>
+        <div> 
+            <p class="choices answer">A. Mocking a Spring Bean requires annotating it with @MockBean annotation.</p>
+            <p class="choices">B. If a Spring Bean already exists in the web slice test spring context, it cannot be mocked.</p>
+            <p class="choices">C. Mocks cannot be used in a Spring Boot web slice test.</p>
+            <p class="choices">D. Mocking a Spring Bean requires annotating it with @Mock annotation.</p>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">5. Which two statements are true regarding Spring Security? (Choose two.)  </p>
+        <div> 
+            
+            <p class="choices answer community-answer">A. Access control can be configured at the method level.</p>
+            <p class="choices">B. A special Java Authentication and Authorization Service (JAAS) policy file needs to be configured.</p>
+            <p class="choices community-answer">C. Authentication data can be accessed using a variety of different mechanisms, including databases and LDAP.</p>
+            <p class="choices answer">D. In the authorization configuration, the usage of permitAll () allows bypassing Spring security completely.</p>
+            <p class="choices">E. It provides a strict implementation of the Java EE Security specification.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AC</p>
+                    permitAll() does not bypass security entirely, it just allows access to the specified matcher, but other security related filters still run. e.g. cors, cqrs ...
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">6. Which two statements are true regarding a Spring Boot-based Spring MVC application? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices community-answer">A. The default embedded servlet container can be replaced with Undertow.</p>
+            <p class="choices answer">B. Jetty is the default servlet container.</p>
+            <p class="choices answer community-answer">C. Spring Boot starts up an embedded servlet container by default.</p>
+            <p class="choices">D. The default port of the embedded servlet container is 8088.</p>
+            <p class="choices">E. Spring MVC starts up an in-memory database by default.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AC</p>
+                    Default embedded servlet container is Tomcat. Jetty and Undertow can be used instead of it.
+                </li>
+                <li>
+                    A - <a href="https://docs.spring.io/spring-boot/docs/1.5.3.RELEASE/reference/html/howto-embedded-servlet-containers.html#:~:text=own%20JettyEmbeddedServletContainerFactory.-,73.13,-Use%20Undertow%20instead">https://docs.spring.io/spring-boot/docs/1.5.3.RELEASE/reference/html/howto-embedded-servlet-containers.html#:~:text=own%20JettyEmbeddedServletContainerFactory.-,73.13,-Use%20Undertow%20instead</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        <p class="questions">7. Which two statements are true regarding Spring and Spring Boot Testing? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. EasyMock is supported out of the box.</p>
+            <p class="choices community-answer">B. @SpringBootTest or @SpringJUnitConfig can be used for creating an ApplicationContext.</p>
+            <p class="choices answer">C. Mockito spy is not supported in Spring Boot testing by default.</p>
+            <p class="choices answer community-answer">D. The spring-test dependency provides annotations such as @Mock and @MockBean.</p>
+            <p class="choices community-answer">E. Integration and slice testing are both supported.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: BE</p>
+                    D - it is not chosen because @Mock is commonly associated with other mocking frameworks like Mockito.
+                </li>
+                <li>
+                    <p>B  and D </p>
+                    <p>mockito is supported</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">8. Assume that the application is using Spring transaction management which uses Spring AOP internally.
+            Choose the statement that describes what is happening when the update1 method is called? (Choose the best answer.)  </p>
+        <img src="./resources/question-image1.png"/>            
+        <div>
+            
+            
+            <p class="choices">A. There are 2 transactions because REQUIRES_NEW always runs in a new transaction.</p>
+            <p class="choices">B. An exception is thrown as another transaction cannot be started within an existing transaction.</p>
+            <p class="choices">C. There is only one transaction because REQUIRES_NEW will use an active transaction if one already exists.</p>
+            <p class="choices answer">D. There is only one transaction initiated by update1() because the call to update2() does not go through the proxy.</p>
+
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: D</p>
+                    The option D is correct due to this article, where this case resolved -
+                    <p><a href="https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth">https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth</a></p>
+                </li>
+                <li>
+                    <p>I think is A correct answer</p>
+                    <p>Option B is incorrect because an exception is not thrown when using REQUIRES_NEW propagation. 
+                        Option C is incorrect because REQUIRES_NEW will always create a new transaction even if an active transaction is present. 
+                        Option D is also incorrect because the call to update2() does go through the proxy and the transactional behavior will be applied.</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">9. Which two statements are true concerning constructor injection? (Choose two.)  </p>     
+        <div> 
+            
+            <p class="choices community-answer">A. If there is only one constructor the @Autowired annotation is not required.</p>
+            <p class="choices">B. Constructor injection only allows one value to be injected.</p>
+            <p class="choices answer community-answer">C. Constructor injection is preferred over field injection to support unit testing.</p>
+            <p class="choices">D. Construction injection can be used with multiple constructors without @Autowired annotation.</p>
+            <p class="choices answer">E. Field injection is preferred over constructor injection from a unit testing standpoint.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AC</p>
+                    Contructor injection is preferred because it allows for easier unit testing. If only one constructor is available it will be used to inject dependencies without the need of @Autowired annotation.
+                </li>
+                <li>
+                    As of Spring Framework 4.3, an @Autowired annotation on such a constructor is no longer necessary if the target bean only defines one constructor to begin with.
+                    Answer A and C
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">10. Given an ApplicationContext containing three bean definitions of type Foo with bean ids foo1, foo2, and foo3, which three @Autowired scenarios are valid and will allow the ApplicationContext to initialize successfully? (Choose three.)  </p>     
+        <div>
+            <p class="choices answer">A. @Autowired public void setFoo (Foo foo) {…}</p>
+            <p class="choices community-answer">B. @Autowired @Qualifier ("foo3") Foo foo;</p>
+            <p class="choices community-answer">C. @Autowired public void setFoo (@Qualifier ("foo1") Foo foo) {…}</p>
+            <p class="choices answer">D. @Autowired private Foo foo;</p>
+            <p class="choices community-answer">E. @Autowired private Foo foo2;</p>
+            <p class="choices answer">F. @Autowired public void setFoo(Foo foo2) {…}</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: BCE</p>
+                    @Qualifier annotation is used to specify a bean id when injecting. @Qualifier can be used both on fields and method parameters. If it is a field injection the name of the field can qualify the bean.
+                </li>
+                <li>
+                    The very first injection was foo1 setter injection (@5293), after that foo3 and foo2 (the upper definition in class gets injected first, so in my code, I had defined the order of injections as follows: B, E, C, but setter injection (C) happens first, then B and E). There is no problem with the same "foo" variable name of two different beans in one class (C and B injections), as the variable scopes are different, and in practice, in case C the foo1 bean can be used and processed immediately (first) or reassigned to another variable name, therefore with this injection configuration the injection of all three beans foo1, foo2, foo3 is possible.
+                </li>
+                <li>
+                    <p>Explanation of my previous comment/answer:</p>
+
+                    <p>Spring injection happens first by type definition, but the type is the same in all answers, so it looks for @Primary annotation, which is not found, then for @Qualifier annotations, and the last lookup, if @Qualifier was not found, is the resolution by bean name. If not successful, after all, the exception is thrown.</p>
+
+                    <p>In my demo app, when I run B,E,C, my break point first stops at setter method setFoo where I can see in debug already injected beans:</p>
+                    <p>Foo@5293 - foo1 - C</p>
+                    <p>Foo@5297 - foo3 - B</p>
+                    <p>Foo@5298 - foo2 - E</p>
+                </li>
+                <li>
+                    <p>A and D is not correct at all. I defined 3 beans definitions with those ids and in my service class used setter injection or simple Foo foo definition of Autowired-> gives error:</p>
+
+                    <p>Could not autowire. There is more than one bean of 'Foo' type.</p>
+                    <p>Beans:</p>
+                    <p>foo1   (MyConfiguration.java), foo2   (MyConfiguration.java), foo3   (MyConfiguration.java) </p>
+
+                    <p>Working cases per single case: B,C,E,F</p>
+                    <p>But not works all 4 together, C and F say the setFoo method name is already defined.</p>
+
+
+                    <p>So B, E, F will work -> but will inject only 2 beans, foo3 and foo2 -> foo2 in 2 places, but is at the end the same bean defined once through setter injection and second time through autowired filed injection.</p>
+
+                    <p>Or B, E, C will work ->  will inject foo1, foo2, foo3</p>
+
+                    <p>So the only correct answer to inject beans foo1,foo2,foo3 with working program is B, E, C.</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">11. Which dependency enables an automatic restart of the application as code is changed during development of a Spring boot configuration on a web application? (Choose the best answer.) </p>     
+        <div>
+            <p class="choices answer">A. spring-boot-devtools</p>
+            <p class="choices">B. spring-boot-initializr</p>
+            <p class="choices">C. spring-boot-starter-devtools</p>
+            <p class="choices">D. spring-boot-restart</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">12. Spring puts each bean instance in a scope. What is the default scope? (Choose the best answer.)</p>     
+        <div> 
+            
+            <p class="choices">A. prototype</p>
+            <p class="choices answer">B. singleton</p>
+            <p class="choices">C. request</p>
+            <p class="choices">D. session</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        
+        <p class="questions">13. Which option is a valid way to retrieve the account id? (Choose the best answer.) </p>
+        <img src="./resources/question-image2.png"/>     
+        <div> 
+            
+            <p class="choices answer">A. Add @PathVariable(“id”) String accountId argument to the update() handler method.</p>
+            <p class="choices">B. Add @PathVariable long accountId argument to the update() handler method.</p>
+            <p class="choices">C. Add @RequestParam long accountId argument to the update() handler method.</p>
+            <p class="choices">D. Add @RequestParam(“id”) String accountId argument to the update() handler method.</p>
+        </div>
+    </div>
+     
+    <div class="entry">
+        
+        <p class="questions">14. Which strategy is correct for configuring Spring Security to intercept particular URLs? (Choose the best answer.) </p>   
+        <div> 
+            
+            <p class="choices answer">A. The URLs can be specified via configuration (using authorizeRequests () and request matchers), with the most specific rule first and the least specific last.</p>
+            <p class="choices">B. Spring Security can obtain URLs from Spring MVC controllers, the Spring Security configuration just needs a reference to the controller to be protected.</p>
+            <p class="choices">C. The URLs are specified in a special properties file, used by Spring Security.</p>
+            <p class="choices">D. The URLs can be specified via configuration (using authorizeRequests () and request matchers), with the least specific rule first and the most specific last.</p>
+
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">15. In which three ways are Security filters used in Spring Security? (Choose three.) </p>
+        <div> 
+            
+            <p class="choices">A. To provide risk governance.</p>
+            <p class="choices answer">B. To drive authentication.</p>
+            <p class="choices">C. To manage application users.</p>
+            <p class="choices answer">D. To provide a logout capability.</p>
+            <p class="choices answer">E. To enforce authorization (access control).</p>
+            <p class="choices">F. To encrypt data.</p>
+
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">16. The above code shows a conditional @Bean method for the creation of a JdbcTemplate bean.
+            Which two statements correctly describe the code behavior? (Choose two.)  </p>
+        <img src="./resources/question-image3.png"/>
+        <div> 
+            
+            <p class="choices answer community-answer">A. @ConditionalOnBean(name= “dataSource”) should be replaced with @ConditionalOnBean (DataSource.class) for greater flexibility.</p>
+            <p class="choices">B. @ConditionalOnBean(name= “dataSource”) should be replaced with @ConditionalOnMissingBean (DataSource.class) for greater flexibility.</p>
+            <p class="choices">C. The @Bean annotation should be removed.</p>
+            <p class="choices answer">D. A JdbcTemplate bean will be created when the DataSource class is in the classpath but there is no DataSource bean.</p>
+            <p class="choices community-answer">E. A JdbcTemplate bean will be created when a bean named dataSource has already been created.</p>
+
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AE</p>
+                    Option D is incorrect because the @ConditionalOnBean annotation requires that a bean with the specified name or class already exists in the application context for the JdbcTemplate bean to be created.
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">17. What is a Spring Boot starter dependency? (Choose the best answer.) </p>
+        <div> 
+            
+            <p class="choices">A. A setting for specifying which code you want Spring Boot to generate for you.</p>
+            <p class="choices">B. A specific POM which you must build to control Spring Boot’s opinionated runtime.</p>
+            <p class="choices">C. A pre-existing model project you can download and use as the basis of your project.</p>
+            <p class="choices answer">D. An easy way to include multiple, coordinated dependencies related to a specific technology, like web or JDBC.</p>
+
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">18. Which two are required to use transactions in Spring? (Choose two.)  </p>
+        <div> 
+            
+            <p class="choices answer">A. Add @EnableTransactionManagement to a Java configuration class.</p>
+            <p class="choices answer">B. Annotate a class, an interface, or individual methods requiring a transaction with the @Transactional annotation.</p>
+            <p class="choices">C. A class must be annotated with @Service and @Transaction.</p>
+            <p class="choices">D. A class requiring a transaction must implement the TransactionInterceptor interface.</p>
+            <p class="choices">E. Write a Spring AOP advice to implement transactional behavior.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">19. Which two statements are true regarding the RestTemplate class? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. It supports asynchronous non-blocking model.</p>
+            <p class="choices answer community-answer">B. It automatically supports sending and receiving Java objects.</p>
+            <p class="choices community-answer">C. It provides convenience methods for writing REST clients.</p>
+            <p class="choices">D. It provides convenience methods for writing REST services.</p>
+            <p class="choices answer">E. Sending an HTTP request with a custom header is not possible when using RestTemplate.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: BC</p>
+                    RestTemplate supports sending custom headers using exchange method with HttpEntity object.
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">20. Which statement is true? (Choose the best answer.) </p>
+        <div> 
+            <p class="choices">A. @ActiveProfiles is a class-level annotation that is used to instruct the Spring TestContext Framework to record all application events that are published in the ApplicationContext during the execution of a single test.</p>
+            <p class="choices">B. @ActiveProfiles is a class-level annotation that you can use to configure how the Spring TestContext Framework is bootstrapped.</p>
+            <p class="choices">C. @ActiveProfiles is a class-level annotation that you can use to configure the locations of properties files and inlined properties to be added to the set of PropertySources in the Environment for an ApplicationContext loaded for an integration test.</p>
+            <p class="choices answer">D. @ActiveProfiles is a class-level annotation that is used to declare which bean definition profiles should be active when loaded an ApplicationContext for an integration test.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">21. Which two statements are true about REST? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices answer">A. REST is a Protocol.</p>
+            <p class="choices">B. REST is Stateful.</p>
+            <p class="choices community-answer">C. REST is Reliable.</p>
+            <p class="choices answer community-answer">D. REST is Interoperable.</p>
+            <p class="choices">E. REST is Relative.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: CD</p>
+                    REST is a API Architectural Style not a Protocol
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">22. Spring Boot will find and load property files in which of the following? (Choose the best answer.) </p>
+        <div> 
+            
+            <p class="choices">A. A *.properties file matching the name of the class annotated with @SpringBootApplication.</p>
+            <p class="choices">B. config.properties or config.yml, usually located in the classpath root.</p>
+            <p class="choices answer">C. application.properties or application.yml, usually located in the classpath root.</p>
+            <p class="choices">D. env.properties or env.yml, usually located in the classpath root.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">23. Which three dependencies are provided by the spring-boot-starter-test? (Choose three.) </p>
+        <div> 
+            
+            <p class="choices">A. Cucumber</p>
+            <p class="choices answer community-answer">B. Hamcrest</p>
+            <p class="choices community-answer">C. spring-test</p>
+            <p class="choices answer community-answer">D. Junit</p>
+            <p class="choices answer">E. EasyMock</p>
+            <p class="choices">F. PowerMock</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: BCD</p>
+                    <a href="https://docs.spring.io/spring-boot/docs/1.5.7.RELEASE/reference/html/boot-features-testing.html">https://docs.spring.io/spring-boot/docs/1.5.7.RELEASE/reference/html/boot-features-testing.html</a>
+                    <p>Test scope dependencies</p>
+                    <p>If you use the spring-boot-starter-test ‘Starter’ (in the test scope), you will find the following provided libraries:</p>
+
+                    <p>JUnit — The de-facto standard for unit testing Java applications.</p>
+                    <p>Spring Test & Spring Boot Test — Utilities and integration test support for Spring Boot applications.</p>
+                    <p>AssertJ — A fluent assertion library.</p>
+                    <p>Hamcrest — A library of matcher objects (also known as constraints or predicates).</p>
+                    <p>Mockito — A Java mocking framework.</p>
+                    <p>JSONassert — An assertion library for JSON.</p>
+                    <p>JsonPath — XPath for JSON.</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">24. Which two statements are correct regarding Spring Boot auto-configuration customization? (Choose two.)</p>
+        <div> 
+            
+            <p class="choices answer">A. Use the @AutoConfigureAfter or @AutoConfigureBefore annotations to apply configuration in a specific order.</p>
+            <p class="choices answer community-answer">B. Disable specific auto-configuration classes by using the exclude attribute on the @EnableAutoConfiguation annotation.</p>
+            <p class="choices community-answer">C. Provide customized auto-configuration by subclassing the provided Spring Boot auto-configuration classes.</p>
+            <p class="choices">D. Enable component scanning within auto-configuration classes to find necessary components.</p>
+            <p class="choices">E. Control the order of auto-configuration classes applied with @AutoConfigureOrder.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: BC</p>
+                    A. The @AutoConfigureAfter, @AutoConfigureBefore, and @AutoConfigureOrder annotations are used to control the order in which auto-configuration classes are applied, not to apply configuration in a specific order
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">25. Which two statements about the @Autowired annotation are true? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices community-answer">A. @Autowired fields are injected after any config methods are invoked.</p>
+            <p class="choices answer community-answer">B. Multiple arguments can be injected into a single method using @Autowired.</p>
+            <p class="choices">C. By default, if a dependency cannot be satisfied with @Autowired, Spring throws a RuntimeException.</p>
+            <p class="choices">D. If @Autowired is used on a class, field injection is automatically performed for all dependencies.</p>
+            <p class="choices answer">E. @Autowired can be used to inject references into BeanPostProcessor and BeanFactoryPostProcessor.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: AB</p>
+                    <p>A and B, per Autowired documentation.</p>
+
+                    <p>Autowired Fields</p>
+                    <p>Fields are injected right after construction of a bean, before any config methods are invoked. Such a config field does not have to be public.</p>
+                    
+                    <p>Autowired Methods</p>
+                    <p>Config methods may have an arbitrary name and any number of arguments; each of those arguments will be autowired with a matching bean in the Spring container. Bean property setter methods are effectively just a special case of such a general config method. Such config methods do not have to be public.</p>
+                </li>
+                <li>
+                    Not sure about A,  because @Autowired fields are injected before any config methods (@Bean, @Component, @Configuration, etc..) are invoked.
+                </li>
+                <li>
+                    E is not correct
+                    <p>Note that actual injection is performed through a BeanPostProcessor which in turn means that you cannot use @Autowired to inject references into BeanPostProcessor or BeanFactoryPostProcessor types. Please consult the javadoc for the AutowiredAnnotationBeanPostProcessor class (which, by default, checks for the presence of this annotation).
+                    <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Autowired.htm">https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Autowired.htm</a></p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">26. Which two statements are correct regarding the @EnableAutoConfiguration annotation? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices answer community-answer">A. It is a meta-annotation on the @SpringBootApplication composed annotation.</p>
+            <p class="choices community-answer">B. It enables auto-configuration of the ApplicationContext by attempting to guess necessary beans.</p>
+            <p class="choices">C. It is meta-annotation on the @SpringBootConfiguration composed annotation.</p>
+            <p class="choices answer">D. It has the same effect regardless of the package of the class that is annotated with it.</p>
+            <p class="choices">E. It ensures auto-configuration is applied before user-defined beans have been registered.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li>
+                    <p style="color: red">Selected Answer: AB</p>
+                        Enable auto-configuration of the Spring Application Context, attempting to guess and configure beans that you are likely to need
+                        <a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/EnableAutoConfiguration.html">https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/EnableAutoConfiguration.html</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">27. Which two statements are true concerning the BeanPostProcessor Extension point? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. BeanPostProcessors are called before the dependencies have been injected.</p>
+            <p class="choices answer">B. Custom BeanPostProcessrs can be implemented for Spring applications.</p>
+            <p class="choices">C. BeanPostProcessors are called before the BeanFactoryPostProcessors.</p>
+            <p class="choices answer">D. BeanPostProcessors are called during the initialization phase of a bean life cycle.</p>
+            <p class="choices">E. BeanPostProcessors cannot be ordered in a Spring Boot application.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">28. Which two statements are true about @Controller annotated classes? (Choose two.)</p>
+        <div> 
+            
+            <p class="choices">A. The @Controller annotated classes can only render views.</p>
+            <p class="choices answer">B. The classes are eligible for handling requests in Spring MVC.</p>
+            <p class="choices">C. The classes must be annotated together with @EnableMvcMappings to be discovered via component scanning.</p>
+            <p class="choices">D. @Controller is interchangeable with @RestController with no extra code changes for the methods inside the class.</p>
+            <p class="choices answer">E. The @Controller annotation is a stereotype annotation like @Component.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">29. Which two statements are correct regarding Spring Boot 2.x Actuator Metrics? (Choose two.)</p>
+        <div> 
+            
+            <p class="choices answer">A. An external monitoring system must be used with Actuator.</p>
+            <p class="choices answer">B. The metrics endpoint /actuator/metrics is exposed over HTTP by default.</p>
+            <p class="choices">C. Timer measures both the number of timed events and the total time of all events timed.</p>
+            <p class="choices">D. Custom metrics can be measured using Meter primitives such as Counter, Gauge, Timer, and Distribution Summary.</p>
+            <p class="choices">E. A metric must be created with one or more tags.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">30. Which two statements describe Spring JdbcTemplate? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. All JdbcTemplate methods throw SQLException which you are required to handle.</p>
+            <p class="choices answer">B. The JdbcTemplate provides the ability to work with result sets.</p>
+            <p class="choices">C. The JdbcTemplate can only perform update but not insert to the database.</p>
+            <p class="choices">D. The JdbcTemplate provides methods for query execution.</p>
+            <p class="choices answer">E. The JdbcTemplate generates SQL statements.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">31. Which two statements are true regarding @DataJpaTest? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. TestEntityManager provides all methods that are provided by EntityManager and more.</p>
+            <p class="choices answer">B. If an embedded database is on classpath, it will be used to configure a DataSource by default.</p>
+            <p class="choices">C. It can be used for testing both JPA components an NoSQL components.</p>
+            <p class="choices answer">D. It auto-configures a TestEntityManager bean.</p>
+            <p class="choices">E. It can be used for testing JdbcTemplate.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">32. Which three statements are advantages of using Spring's Dependency Injection? (Choose three.) </p>
+        <div> 
+            
+            <p class="choices">A. Dependency injection can make code easier to trace because it couples behavior with construction.</p>
+            <p class="choices answer">B. Dependency injection reduces the start-up time of an application.</p>
+            <p class="choices">C. Dependencies between application components can be managed external to the components.</p>
+            <p class="choices answer">D. Configuration can be externalized and centralized in a small set of files.</p>
+            <p class="choices answer">E. Dependency injection creates tight coupling between components.</p>
+            <p class="choices">F. Dependency injection facilitates loose coupling between components.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">33. Which three types can be used as @Controller method arguments? (Choose three.) </p>
+        <div> 
+            
+            <p class="choices answer community-answer">A. Locale.</p>
+            <p class="choices community-answer">B. Principal.</p>
+            <p class="choices">C. Language.</p>
+            <p class="choices">D. Session.</p>
+            <p class="choices answer">E. Request.</p>
+            <p class="choices answer community-answer">F. HttpSession.</p>
+        </div>
+        <div class="discussion">
+            <h4>COMMUNITY DISCUSSION</h4>
+            <ol class="discussion-entry">
+                <li >
+                    <p style="color: red">Selected Answer: ABF</p>
+                    <p>Http Session, Locale and Principal</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">34. Which two options are valid optional attributes for Spring's @Transactional annotation? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices answer">A. isolation.</p>
+            <p class="choices">B. writeOnly.</p>
+            <p class="choices">C. nestedTransaction.</p>
+            <p class="choices">D. readWrite.</p>
+            <p class="choices answer">E. propagation.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">35. Which statement describes the propagation behavior of Propagation.REQUIRES_NEW annotation? (Choose the best answer.) </p>
+        <div> 
+            
+            <p class="choices">A. Starts a new transaction but throws an exception if an active transaction already exists.</p>
+            <p class="choices">B. Joins a transaction if one already exists; throws an exception if an active transaction does not exist.</p>
+            <p class="choices answer">C. Starts a new transaction; if an active transaction already exists, it is suspended.</p>
+            <p class="choices">D. Runs in a nested transaction if an active transaction exists; throw an exception if an active transaction does not exist.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">36. Which two statements are true about Spring Boot and Spring Data JPA? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. @EntityScan and spring.jpa.* properties can be used to customize Spring Data JPA.</p>
+            <p class="choices">B. Any kind of Hibernate property can be passed to Spring Data JPA like spring.jpa.properties.xxx.</p>
+            <p class="choices answer">C. Spring Data JPA is the only implementation of relational databases.</p>
+            <p class="choices">D. Scanning of JPA Entities can not be customized, the whole classpath is scanned.</p>
+            <p class="choices answer">E. Embedded Databases(H2, HSQLDB, Derby) are not re-created during the startup.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">37. What two options are auto-configured Spring Boot Actuator HealthIndicators? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices answer">A. DataSourceHealthIndicator</p>
+            <p class="choices">B. GoogleCloudDataStoreHealthIndicator</p>
+            <p class="choices">C. DynamoDBHealthIndicator</p>
+            <p class="choices answer">D. RabbitHealthIndicator</p>
+            <p class="choices">E. OktaHealthIndicator</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">38. Which two statements are correct regarding Spring Boot auto-configuration? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. Auto-configuration uses @Conditional annotations to constrain when it should apply.</p>
+            <p class="choices">B. Auto-configuration could apply when a bean is missing but not when a bean is present.</p>
+            <p class="choices">C. Auto-configuration is applied by processing candidates listed in META-INF/spring.factories.</p>
+            <p class="choices answer">D. Auto-configuration could apply when a bean is present but not when a bean is missing.</p>
+            <p class="choices answer">E. Auto-configuration is applied before user-defined beans have been registered.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">39. Which two statements are true regarding storing user details in Spring Security? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices answer">A. With custom UserDetailsService defined in the ApplicationContext, Spring Boot still creates the default user.</p>
+            <p class="choices">B. Passwords must be hashed and the default hashing algorithm is MD5.</p>
+            <p class="choices">C. User details can be stored in custom storage and retrieve them by implementing the UserDetailService interface.</p>
+            <p class="choices">D. User details can be stored in a database, in LDAP, or in-memory.</p>
+            <p class="choices answer">E. The user details includes username and password but not authorities.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">40. Which two statements about pointcut expressions are true? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. A pointcut expression cannot specify the type parameters.</p>
+            <p class="choices">B. A pointcut expression with throw an exception if no methods are matched.</p>
+            <p class="choices">C. A pointcut expression cannot have a wildcard for a method name.</p>
+            <p class="choices answer">D. A pointcut expression can include operators such as the following: && (and), || (or), ! (not).</p>
+            <p class="choices answer">E. A pointcut expression can be used to select join points which have been annotated with specific annotation.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">41. Which following statements are true about Spring Data? (Choose two.) </p>
+        <div> 
+            
+            <p class="choices">A. Spring Data implementation exist for many data storage types, such as MongoDB, Neo4j, and Redis.</p>
+            <p class="choices">B. Spring Data works by applying the JPA annotations to data stores such as MongoDB, Neo4j, and Redis.</p>
+            <p class="choices answer">C. Spring Data can greatly reduce the amount of "boilerplate" code typically needed for data access.</p>
+            <p class="choices answer">D. Spring Data is specifically designed for JPA, JDBC, and relational database access only.</p>
+            <p class="choices">E. Spring Data cannot be used together with Spring MVC.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">42. Which two annotations indicate that the transaction for a transactional test method should be committed after the test method has completed? (Choose two.)</p>
+        <div> 
+            <p class="choices">A. @SqlMergeMode(false)</p>
+            <p class="choices answer">B. @Rollback(false)</p>
+            <p class="choices answer">C. @Commit</p>
+            <p class="choices">D. @Sql(alwaysCommit=true)</p>
+            <p class="choices">E. @Transactional(commit=true)</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">43.  Which statement describes the @AfterReturning advice type? (Choose the best answer.)</p>
+        <div> 
+            <p class="choices answer">A. The advice is invoked only if the method returns successfully but not if it throws an exception.</p>
+            <p class = "choices">B. The @AfterReturning advice allows behavior to be added after a method returns even if it throws an exception.</p>
+            <p class = "choices">C. The advice has complete control over the method invocation; it could even prevent the method from being called at all.</p>
+            <p class = "choices">D. Typically used to prevent any exception, thrown by the advised method, from propagating up the call-stack.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">44.  Which two statements are correct regarding the Actuator info endpoint? (Choose two.)</p>
+        <div> 
+            <p class = "choices answer">A. It provides configuration options through which only an authenticated user can display application information.</p>
+            <p class = "choices">B. It is not enabled by default.</p>
+            <p class = "choices answer">C. It can be used to display arbitrary application information.</p>
+            <p class = "choices">D. It can be used to change a property value on a running application.</p>
+            <p class = "choices">E. Typically it is used to display build or source control information.</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        
+        <p class="questions">45. Which two statements are correct regarding the HelloAutoConfig auto-configuration class when it is specified in the META-INF/spring.factories file? (Choose two.)</p>
+        <img src="./resources/question-image4.png"/>
+        <div> 
+            <p class = "choices answer">A. A HelloService bean will be created from the helloService() method even if the HelloService.class is not in the classpath.</p>
+            <p class = "choices answer">B. A HelloService bean will be created from the helloService() method only when there is no other HelloService bean in the ApplicationContext.</p>
+            <p class = "choices">C. This auto-configuration class is used only when the HelloService.class is not on the classpath.</p>
+            <p class = "choices answer">D. This auto-configuration class is used only when the HelloService.class is on the classpath.</p>
+            <p class = "choices">E. A HelloService bean will be created from the helloService() method and will replace existing a HelloService bean in the ApplicationContext.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">46. Which two statements are correct when @SpringBootApplication is annotated on a class? (Choose two.)</p>
+        <div> 
+            <p class = "choices answer">A. It causes Spring Boot to enable auto-configuration by default.</p>
+            <p class = "choices">B. Component scanning will start from the package of the class.</p>
+            <p class = "choices">C. All other annotations on the class will be ignored.</p>
+            <p class = "choices">D. Methods in the class annotated with @Bean will be ignored.</p>
+            <p class = "choices answer">E. A separate ApplicationContext will be created for each class annotated with @SpringBootApplication.</p>
+        </div>
+    </div>
+    <div class="entry">
+        
+        <p class="questions">47. Which statement about @TestPropertySource annotation is true? (Choose the best answer.)</p>
+        <div> 
+            <p class = "choices">A. Java system properties have higher precedence than the properties loaded from @TestPropertySource.</p>
+            <p class = "choices">B. Properties defined @PropertySource are not loaded if @TestPropertySource is used.</p>
+            <p class = "choices">C. @TestPropertySource annotation loads a properties file relative to the root of the project by default.</p>
+            <p class = "choices answer">D. Inlined properties defined in @TestPropertySource can be used to override properties defined in property files.</p>
+        </div>
+    </div>
+    
+</html>

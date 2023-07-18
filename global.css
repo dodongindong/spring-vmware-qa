@@ -1,0 +1,52 @@
+body {
+    background-color: whitesmoke;
+}
+h1, h4 {
+    font-family: 'Oswald', Helvetica, Arial, serif;
+}
+.entry{
+    width: 50%;
+}
+.entry {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.5s;
+    margin: 25px;
+}
+.questions{
+    padding: 6px 16px;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    font-size: larger;
+    text-align: justify;
+    background-color: rgb(253, 244, 123);
+    text-decoration: 2rgb(251, 255, 173);
+    font-family: 'Oswald', Helvetica, Arial, serif;
+    font-weight: 500;
+}
+.choices{
+    font-size: large;
+    padding: 15px;
+    margin: 2px;
+    font-family: 'Oswald', Helvetica, Arial, serif;
+    font-weight: 100;
+}
+.answer {
+    text-align: justify;
+    background-color: rgb(55, 208, 235);
+    color: rgb(255, 255, 250);
+    outline: 3px solid gray;
+}
+.community-answer {
+    outline: 3px solid rgb(246, 24, 24);
+}
+.discussion {
+    width: auto;
+    height: auto;
+    padding: 6px 16px;
+    outline: 5px solid gray;
+}
+.discussion-entry {
+    font-family: 'Oswald', Helvetica, Arial, serif;
+    font-size: large;
+}
